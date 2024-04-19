@@ -1,5 +1,5 @@
 
-namespace EpoCSReader.Core
+namespace EpoCSReader.Utils
 {
 		public static class FileSystem
 		{

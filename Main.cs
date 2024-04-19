@@ -5,16 +5,10 @@ namespace EpoCSReader
 	{
 		public static void Main(string[] args)
 		{
-			
-			var folders = FileSystem.FolderListInPath(Directory.GetCurrentDirectory());
-			foreach(string folder in folders)
+			Reader reader = new Reader();
+			while(reader.IsRunning())
 			{
-				Console.WriteLine(folder);
-			}
-			var files = FileSystem.FilesInFolder(Directory.GetCurrentDirectory());
-			foreach (string file in files)
-			{
-				Console.WriteLine(file);
+
 			}
 		}
 	}
