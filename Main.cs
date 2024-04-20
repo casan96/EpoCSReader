@@ -1,5 +1,4 @@
 ﻿using EpoCSReader.Core;
-using System.ComponentModel.Design;
 namespace EpoCSReader
 {
 	public static class MainEstar
@@ -12,7 +11,7 @@ namespace EpoCSReader
 				return;
 			}
 			Reader reader = new Reader(args[0]);
-			//reader.Run();
+			reader.Run();
 			
 		}
 	}

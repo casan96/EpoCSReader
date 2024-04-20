@@ -6,39 +6,32 @@ namespace EpoCSReader.Core
 		private string? _Path;
 		private bool IsRunning;
 		public string? Path { get => _Path; }
+		public FileManagement.EpubFile epub;
         public Reader(string pathFile)
 		{
 			_Path = pathFile;
+			IsRunning = true;
+			epub = FileManagement.OpenEpub(_Path);
 		}
 
 		public void ShowContentInPath()
 		{
-			if (_Path == null) return;
-			var folders = FileManagement.FolderListInPath(_Path);
-			foreach(string folder in folders)
-			{
-				Console.WriteLine(folder);
-			}
-			var files = FileManagement.FilesInFolder(_Path);
-			foreach (var file in files)
-			{
-				Console.WriteLine(file);
-			}
+			
 		}
 
 		public void Run()
 		{
+			while (IsRunning)
+			{
+                ProcessKey(Console.ReadKey());
+				//Console.Clear();
+			}
             
         }
-		
-		private void ChangePath(string removePath)
-		{
-			_Path  = _Path?.Replace(removePath, "");
-		}
 
 		private void ProcessKey(ConsoleKeyInfo key)
 		{
-			if (key.KeyChar == 'c')
+			if (key.Key == ConsoleKey.RightArrow)
 			{
 				IsRunning = false;
 			}
