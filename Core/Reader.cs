@@ -4,31 +4,44 @@ namespace EpoCSReader.Core
 	public class Reader
 	{
 		private string? _Path;
-
+		private bool IsRunning;
 		public string? Path { get => _Path; }
-        public Reader()
+        public Reader(string pathFile)
 		{
-			_Path = Directory.GetCurrentDirectory();
+			_Path = pathFile;
 		}
 
 		public void ShowContentInPath()
 		{
 			if (_Path == null) return;
-			var folders = FileSystem.FolderListInPath(_Path);
+			var folders = FileManagement.FolderListInPath(_Path);
 			foreach(string folder in folders)
 			{
 				Console.WriteLine(folder);
 			}
-			var files = FileSystem.FilesInFolder(_Path);
+			var files = FileManagement.FilesInFolder(_Path);
 			foreach (var file in files)
 			{
 				Console.WriteLine(file);
 			}
 		}
 
-		public bool IsRunning()
+		public void Run()
 		{
-			return true;
+            
+        }
+		
+		private void ChangePath(string removePath)
+		{
+			_Path  = _Path?.Replace(removePath, "");
+		}
+
+		private void ProcessKey(ConsoleKeyInfo key)
+		{
+			if (key.KeyChar == 'c')
+			{
+				IsRunning = false;
+			}
 		}
 	}
 }
