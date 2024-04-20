@@ -1,6 +1,10 @@
-#Folders 
+# Folders 
 bin
 obj
+
+# vs files
+.vs
+Properties
 
 # Prerequisites
 *.d
