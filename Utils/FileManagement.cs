@@ -8,7 +8,7 @@ namespace EpoCSReader.Utils
 	{
 		public struct Item
 		{
-            public string Name;
+            public string? Name;
 			public string PathInFile;
 			public XmlDocument content;
 			public Item(string path, string contentText)
@@ -102,8 +102,9 @@ namespace EpoCSReader.Utils
 		private static void SetTitleItem(ref Item item)
 		{
 			var title = item.content.GetElementsByTagName("title");
-			if (title[0]?.InnerText == "") { return; }
-			Console.WriteLine(item.content.GetElementsByTagName("title")[0]?.InnerText);
+			if (title[0]?.InnerText == "") item.Name = "No Title";
+			else item.Name = title[0]?.InnerText;
+			Console.WriteLine(item.Name);
 		}
 	}
 }

@@ -1,18 +1,22 @@
 ﻿using EpoCSReader.Core;
+using EpoCSReader.Utils;
+using Microsoft.Win32.SafeHandles;
+
 namespace EpoCSReader
 {
-	public static class MainEstar
-	{
-		public static void Main(string[] args)
-		{
-			if (args.Length != 1) 
-			{
-				Console.WriteLine("Pass the path of the file like argument");
-				return;
-			}
-			Reader reader = new Reader(args[0]);
-			reader.Run();
-			
-		}
-	}
+    public static class MainEstar
+    {
+        
+        public static void Main(string[] args)
+        {
+            if (args.Length != 1)
+            {
+                ConsoleAPI.MessageBox(IntPtr.Zero, "Pass the path of the file like argument", "Error", 0);
+                return;
+            }
+            //Reader reader = new Reader(args[0]);
+            //reader.Run();
+            
+        }
+    }
 }
